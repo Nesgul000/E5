@@ -307,8 +307,22 @@
 
         .skill-card li {
             padding: 0.45rem 0;
+            padding-left: 1.4rem;
+            position: relative;
             color: var(--text-light);
             font-size: 0.95rem;
+        }
+
+        .skill-card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
         }
 
         /* ======================== */
@@ -404,37 +418,6 @@
             padding: 0.25rem 0;
         }
 
-        /* Mission number badge */
-        .mission-number {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.2rem 0.7rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Mission results */
-        .mission-results {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .mission-results span {
-            background: rgba(46, 204, 113, 0.12);
-            color: #6ee7a0;
-            padding: 0.25rem 0.7rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(46, 204, 113, 0.2);
-        }
-
         /* Bouton PDF */
         .btn-pdf {
             display: inline-flex;
@@ -456,6 +439,29 @@
         .btn-pdf:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .project-links .btn-pdf {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .btn-production {
+            border-color: var(--primary) !important;
+            background: rgba(56, 139, 184, 0.08) !important;
+        }
+
+        .btn-production:hover {
+            background: var(--primary-dark) !important;
         }
 
         .btn-pdf svg {
@@ -662,6 +668,136 @@
             text-decoration: underline;
         }
 
+        /* === TIMELINE VEILLE === */
+        .veille-timeline {
+            position: relative;
+            max-width: 850px;
+            margin: 0 auto 3rem auto;
+            padding: 1rem 0;
+        }
+
+        .veille-timeline::before {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                var(--primary) 0%,
+                var(--primary-light) 50%,
+                var(--primary) 100%);
+            opacity: 0.5;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(56, 139, 184, 0.15);
+            z-index: 2;
+            transition: all var(--transition);
+        }
+
+        .timeline-item:hover .timeline-marker {
+            background: var(--primary);
+            color: var(--text-white);
+            border-color: var(--text-white);
+            transform: scale(1.05);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border-left: 3px solid var(--primary-light);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            transition: all var(--transition);
+        }
+
+        .timeline-item:hover .timeline-content {
+            background: var(--bg-card-hover);
+            border-left-color: var(--text-white);
+            transform: translateX(4px);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-white);
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .veille-conclusion {
+            background: linear-gradient(135deg, rgba(56, 139, 184, 0.08), rgba(40, 52, 90, 0.3));
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            margin: 2rem auto 2.5rem auto;
+            max-width: 850px;
+        }
+
+        .veille-conclusion p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .veille-timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-left: 60px;
+            }
+            .timeline-marker {
+                width: 42px;
+                height: 42px;
+            }
+            .timeline-marker svg {
+                width: 14px;
+                height: 14px;
+            }
+            .veille-conclusion {
+                padding: 1.2rem 1.3rem;
+            }
+        }
+        /* === FIN TIMELINE === */
+
         /* ======================== */
         /*        ENTREPRISE        */
         /* ======================== */
@@ -670,138 +806,53 @@
             padding: 5rem 2rem;
         }
 
-        .entreprise-section > h2 {
+        .entreprise-section .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .entreprise-section h2 {
             max-width: 1200px;
             margin: 0 auto 3rem;
         }
 
-        .entreprise-header {
-            max-width: 1200px;
-            margin: 0 auto 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
+        .entreprise-text h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
 
-        .entreprise-header .entreprise-logo {
-            flex-shrink: 0;
-            width: 100px;
-            height: 100px;
-            background: #fff;
+        .entreprise-text p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .entreprise-text p strong {
+            color: var(--primary-light);
+        }
+
+        .entreprise-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .entreprise-img-box {
+            background: #ffffff;
             border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem;
-        }
-
-        .entreprise-header .entreprise-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .entreprise-header-info h3 {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .entreprise-header-info p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .entreprise-body {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .entreprise-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-        }
-
-        .entreprise-card h4 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .entreprise-card p {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: var(--text-light);
-        }
-
-        .entreprise-card p strong {
-            color: var(--primary-light);
-        }
-
-        .entreprise-card .pole-item {
-            margin-bottom: 0.6rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--primary);
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .entreprise-card .pole-item strong {
-            color: var(--text-light);
-        }
-
-        .context-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.4rem 1.5rem;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .context-grid span strong {
-            color: var(--text-light);
-        }
-
-        .entreprise-card.full-width {
-            grid-column: 1 / -1;
-        }
-
-        .entreprise-organigramme {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            background: #ffffff;
-            border-radius: var(--radius);
             overflow: hidden;
-            text-align: center;
         }
 
-        .entreprise-organigramme img {
+        .entreprise-img-box img {
             width: 100%;
-            max-height: 400px;
+            height: 250px;
             object-fit: contain;
             padding: 1rem;
-        }
-
-        .entreprise-organigramme p {
-            background: rgba(0,0,0,0.03);
-            padding: 0.5rem;
-            font-size: 0.85rem;
-            color: #666;
-            margin: 0;
         }
 
         /* ======================== */
@@ -967,19 +1018,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .entreprise-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .entreprise-body {
-                grid-template-columns: 1fr;
-            }
-
-            .context-grid {
-                grid-template-columns: 1fr;
-            }
-
             h2 {
                 font-size: 1.8rem;
             }
@@ -1037,11 +1075,11 @@
             <ul id="nav-menu">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#apropos">À propos</a></li>
+                <li><a href="#parcours">Parcours</a></li>
                 <li><a href="#entreprise">Entreprise</a></li>
                 <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Missions E5</a></li>
+                <li><a href="#projets">Missions</a></li>
                 <li><a href="#veille">Veille</a></li>
-                <li><a href="#parcours">Parcours</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1060,10 +1098,17 @@
         <h2>À propos de moi</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Actuellement en deuxième année de BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux (SISR), je suis passionné par l'administration systèmes et réseaux.</p>
-                <p>Mon objectif professionnel est de devenir administrateur systèmes et réseaux, en accompagnant les entreprises dans la gestion et la sécurisation de leur infrastructure informatique.</p>
-                <p>Ce portfolio présente mes réalisations professionnelles et académiques dans le cadre de ma formation BTS SIO SISR.</p>
-                <a href="BTS SIO - Enes GUL .pdf" target="_blank" class="btn-cv">
+                <p><strong>Bonjour, je m'appelle Enes GUL.</strong> Mon parcours est marqué par une <strong>transition</strong> qui a donné tout son sens à mon projet professionnel actuel.</p>
+
+                <p>Après mon <strong>Baccalauréat général</strong> au lycée Eugène Hénaff, j'ai d'abord intégré une <strong>licence d'Histoire à la Sorbonne</strong> — une matière qui me passionnait et où j'excellais.</p>
+
+                <p>Au cours de cette année, j'ai pris conscience que ma véritable curiosité se situait ailleurs : <strong>l'informatique est au cœur de tout</strong>. J'ai eu besoin de comprendre l'envers du décor.</p>
+
+                <p>C'est ce qui m'a poussé à me <strong>réorienter vers le BTS SIO</strong> à l'école <strong>Aurlom</strong>. J'ai choisi l'option <strong>SISR</strong> par préférence pour l'aspect <strong>structurel et concret</strong> de l'informatique — administration, réseau et sécurité — plutôt que la programmation logicielle.</p>
+
+                <p>J'ai choisi l'<strong>alternance</strong> pour confronter immédiatement mes apprentissages au terrain et gagner en maturité professionnelle au sein d'une structure d'envergure comme <strong>Eau de Paris</strong>.</p>
+
+                <a href="BTS SIO - Enes GUL .pdf" download class="btn-cv">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
                     Consulter mon CV
                 </a>
@@ -1080,61 +1125,58 @@
         </div>
     </section>
 
+    <!-- Parcours -->
+    <section id="parcours">
+        <h2>Parcours de formation</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2024 - 2026</div>
+                <h3>BTS Services Informatiques aux Organisations</h3>
+                <p><strong>Option SISR</strong> - Aurlom, Paris</p>
+                <p>Formation axée sur l'administration des systèmes et réseaux, la virtualisation, la sécurité informatique et la gestion d'infrastructure.</p>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2024 - 2026 (2 années)</div>
+                <h3>Alternance en entreprise</h3>
+                <p><strong>Entreprise Eau de Paris</strong> - Paris</p>
+                <p>Missions : Administration système Windows/Linux, support utilisateurs, maintenance infrastructure réseau, participation à des projets de migration.</p>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2023 - 2024</div>
+                <h3>Licence d'Histoire</h3>
+                <p><strong>Université Paris-Sorbonne (Sorbonne Lettres)</strong> - Paris</p>
+                <p>Première année de Licence d'Histoire. Cette expérience universitaire m'a permis de développer ma rigueur méthodologique et m'a confirmé mon attrait pour un domaine plus concret et structurel : l'informatique.</p>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">2021 - 2023</div>
+                <h3>Baccalauréat Général</h3>
+                <p><strong>Mention Assez-Bien</strong> - Lycée Eugène Henaff, Bagnolet</p>
+                <p>Option Sciences Economiques et Sociales / Histoire Géographie Géopolitique et Sciences Politiques</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Entreprise -->
     <section id="entreprise" class="entreprise-section">
         <h2>Mon Entreprise</h2>
-
-        <!-- En-tete : logo + nom -->
-        <div class="entreprise-header fade-in">
-            <div class="entreprise-logo">
-                <img src="Eau_de_Paris_(logo).svg.png" alt="Logo Eau de Paris">
+        <div class="about-content">
+            <div class="about-text entreprise-text">
+                <h3>Eau de Paris</h3>
+                <p>Eau de Paris est l'entreprise publique chargée de la production et de la distribution de l'eau potable pour la ville de Paris. Elle gère l'ensemble du cycle de l'eau, de la captation des ressources jusqu'au robinet des usagers, en passant par le traitement, le transport et le contrôle qualité.</p>
+                <p><strong>Secteur informatique :</strong> Le Service Infrastructures et Opérations conçoit, met en œuvre et maintient les infrastructures informatiques d'Eau de Paris, et assure le support des utilisateurs.</p>
+                <p>Le pôle Opérations et Sécurité garantit l'architecture technique, pilote l'évolution des infrastructures et intègre les applications fournies par les autres services.</p>
+                <p>Le pôle Support et Environnement Utilisateurs est le point d'entrée unique pour tous les utilisateurs, qu'il s'agisse de l'attribution de matériel ou de logiciels, ou du traitement de leurs demandes et problèmes.</p>
+                <p><strong>Effectif :</strong> +/- 1200 collaborateurs</p>
+                <p><strong>Missions confiées :</strong> Administration systèmes et réseaux, support technique, maintenance infrastructure, participation aux projets de migration et sécurisation.</p>
             </div>
-            <div class="entreprise-header-info">
-                <h3>Eau de Paris — Regie municipale de l'eau</h3>
-                <p>Entreprise publique de production et distribution d'eau potable pour Paris et ses <strong>3 millions d'usagers</strong>. Environ <strong>1 200 collaborateurs</strong> repartis sur plusieurs sites (siege rue Neuve-Tolbiac, usines de traitement, stations de captage).</p>
-            </div>
-        </div>
-
-        <!-- Corps : cartes en grille -->
-        <div class="entreprise-body">
-            <div class="entreprise-card fade-in">
-                <h4>Direction des Systemes d'Information</h4>
-                <p>Le <strong>Service Infrastructures et Operations (SIO)</strong> concoit, deploie et maintient les infrastructures informatiques. Il se structure en deux poles :</p>
-                <div class="pole-item"><strong>Pole Operations et Securite :</strong> architecture technique, evolution des infrastructures (serveurs, virtualisation, stockage, reseau), cybersecurite (pare-feux, GPO, antivirus, PRA).</div>
-                <div class="pole-item"><strong>Pole Support et Environnement Utilisateurs :</strong> point d'entree unique (SPOC) — attribution materiel/logiciels, traitement des incidents et demandes via GLPI, accompagnement au changement.</div>
-            </div>
-
-            <div class="entreprise-card fade-in">
-                <h4>Mon role</h4>
-                <p>Integre au <strong>Pole Support et Environnement Utilisateurs</strong>, avec interventions regulieres cote Pole Operations et Securite :</p>
-                <div class="pole-item"><strong>Support :</strong> N1/N2 via GLPI, accompagnement utilisateurs</div>
-                <div class="pole-item"><strong>Administration :</strong> Active Directory, serveurs Windows/Linux</div>
-                <div class="pole-item"><strong>Deploiement :</strong> parc via Ivanti (PXE)</div>
-                <div class="pole-item"><strong>Reseau :</strong> VLANs, VPN, configuration Cisco</div>
-                <div class="pole-item"><strong>Supervision :</strong> exploitation Zabbix, documentation technique</div>
-            </div>
-
-            <div class="entreprise-card full-width fade-in">
-                <h4>Contexte technique</h4>
-                <div class="context-grid">
-                    <span><strong>Parc :</strong> ~800 postes (Win 10/11), ~50 nomades</span>
-                    <span><strong>Serveurs :</strong> ~60 physiques/virtuels (WS 2019/2022, Debian)</span>
-                    <span><strong>Virtualisation :</strong> VMware vSphere 7.x, SAN NetApp</span>
-                    <span><strong>Reseau :</strong> Cisco Catalyst/ISR, VLANs, VPN IPsec, Meraki</span>
-                    <span><strong>AD :</strong> Foret mono-domaine, ~1 200 comptes, GPO</span>
-                    <span><strong>Supervision :</strong> Zabbix 6.x</span>
-                    <span><strong>Deploiement :</strong> Ivanti Management Suite</span>
-                    <span><strong>ITSM :</strong> GLPI 10.x</span>
-                    <span><strong>Sauvegarde :</strong> Veeam B&R, politique 3-2-1, PRA</span>
-                    <span><strong>Securite :</strong> FortiGate, Trend Micro, MFA</span>
+            <div class="entreprise-images">
+                <div class="entreprise-img-box">
+                    <img src="Eau_de_Paris_(logo).svg.png" alt="Logo Eau de Paris">
+                </div>
+                <div class="entreprise-img-box">
+                    <img src="Organigramme DSI octobre 2024 (nominatif)_page-0001 (1).jpg" alt="Organigramme Eau de Paris">
                 </div>
             </div>
-        </div>
-
-        <!-- Organigramme pleine largeur -->
-        <div class="entreprise-organigramme fade-in">
-            <img src="Organigramme DSI octobre 2024 (nominatif)_page-0001 (1).jpg" alt="Organigramme DSI Eau de Paris">
-            <p>Organigramme de la Direction des Systemes d'Information — Eau de Paris</p>
         </div>
     </section>
 
@@ -1190,194 +1232,226 @@
                 <h3><span class="skill-icon">🗄️</span> Bases de données</h3>
                 <ul>
                     <li>MySQL</li>
-                    <li>ChromaDB</li>
+                    <li>PostgreSQL</li>
                     <li>Sauvegarde et optimisation</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Realisations professionnelles E5 -->
+    <!-- Missions -->
     <section id="projets">
-        <h2>Realisations professionnelles (E5)</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-top: -2rem; margin-bottom: 2.5rem;">6 missions realisees chez Eau de Paris — Epreuve E5 Administration des systemes et des reseaux</p>
+        <h2>Mes missions et réalisations</h2>
         <div class="projects-grid">
 
-            <!-- Mission 1 -->
+            <!-- MISSION 1 — Support GLPI -->
             <div class="project-card fade-in">
                 <div class="project-header">
-                    <span class="mission-number">Mission 1</span>
-                    <h3>Infrastructure Active Directory & GPO</h3>
-                    <p>Oct. 2024 — Dec. 2024</p>
+                    <h3>Mission 1 — Support Utilisateur et Gestion des Incidents (GLPI)</h3>
+                    <p>Garantir la continuité de service et le respect des délais d'intervention (SLA)</p>
                 </div>
                 <div class="project-body">
-                    <p>Audit et restructuration de l'annuaire AD suite a une reorganisation interne : suppression de 180 comptes obsoletes, nouvelle arborescence OU, deploiement de 12 GPO de securite (mots de passe, verrouillage session, restriction USB), installation d'un DC secondaire et automatisation via scripts PowerShell.</p>
+                    <p>Au quotidien chez Eau de Paris, j'ai assuré le support via GLPI. Mon rôle consistait à qualifier les incidents, établir des diagnostics et documenter les résolutions pour garantir le respect de nos délais d'intervention (SLA).</p>
                     <div class="tags">
-                        <span class="tag">Windows Server 2022</span>
+                        <span class="tag">GLPI</span>
+                        <span class="tag">ITSM / ITIL</span>
+                        <span class="tag">SLA</span>
+                        <span class="tag">Support N1/N2</span>
+                    </div>
+                    <div class="competences-list">
+                        <h4>Compétences mobilisées :</h4>
+                        <ul>
+                            <li>• D2 — Collecter, suivre et orienter des demandes</li>
+                            <li>• D2 — Traiter des incidents</li>
+                            <li>• D5 — Accompagner les utilisateurs</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="realisations/Mission1_Support_GLPI.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission1_Productions_GLPI.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MISSION 2 — Active Directory -->
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <h3>Mission 2 — Audit et Restructuration de l'Active Directory</h3>
+                    <p>Sécuriser les habilitations et assurer la conformité des données (RGPD)</p>
+                </div>
+                <div class="project-body">
+                    <p>Sur la partie système, j'ai audité notre Active Directory. J'ai procédé au nettoyage des comptes inactifs et restructuré certaines Unités Organisationnelles pour renforcer notre sécurité et notre conformité RGPD.</p>
+                    <div class="tags">
                         <span class="tag">Active Directory</span>
-                        <span class="tag">GPO</span>
                         <span class="tag">PowerShell</span>
-                    </div>
-                    <div class="mission-results">
-                        <span>180 comptes supprimes</span>
-                        <span>12 GPO deployees</span>
-                        <span>Temps creation compte : 15 min → 2 min</span>
+                        <span class="tag">GPO</span>
+                        <span class="tag">RGPD</span>
                     </div>
                     <div class="competences-list">
-                        <h4>Competences mobilisees :</h4>
+                        <h4>Compétences mobilisées :</h4>
                         <ul>
-                            <li><strong>Concevoir</strong> — architecture AD, plan OU, matrice de droits</li>
-                            <li><strong>Deployer</strong> — DC secondaire, 12 GPO, scripts PowerShell</li>
-                            <li><strong>Exploiter</strong> — audit AD, maintenance, documentation</li>
+                            <li>• D1 — Gérer les habilitations d'accès</li>
+                            <li>• D1 — Recenser les ressources numériques</li>
+                            <li>• D4 — Analyser les objectifs et planifier</li>
                         </ul>
                     </div>
-                    <a href="Annexe_7-1-A_Mission1_Enes_GUL.pdf" target="_blank" class="btn-pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        Consulter la fiche (PDF)
-                    </a>
+                    <div class="project-links">
+                        <a href="realisations/Mission2_Audit_AD.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission2_Productions_AD.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Mission 2 -->
+            <!-- MISSION 3 — Ivanti -->
             <div class="project-card fade-in">
                 <div class="project-header">
-                    <span class="mission-number">Mission 3</span>
-                    <h3>Supervision d'infrastructure avec Zabbix</h3>
-                    <p>Dec. 2024 — Fev. 2025</p>
+                    <h3>Mission 3 — Télédistribution et Gestion de Parc (Ivanti)</h3>
+                    <p>Automatiser les déploiements logiciels sans interruption pour les collaborateurs</p>
                 </div>
                 <div class="project-body">
-                    <p>Mise en place d'une plateforme de supervision proactive Zabbix 6.4 sur Debian 12 : deploiement d'agents Windows/Linux, monitoring SNMP des equipements Cisco/Meraki, creation de dashboards, alertes e-mail/Teams et rapports SLA mensuels automatises.</p>
+                    <p>J'ai participé au renouvellement du matériel en utilisant Ivanti pour automatiser le déploiement des postes et télédistribuer les applications, offrant un gain de temps majeur pour l'intégration des collaborateurs.</p>
                     <div class="tags">
-                        <span class="tag">Zabbix 6.4</span>
-                        <span class="tag">Debian 12</span>
-                        <span class="tag">SNMP</span>
-                        <span class="tag">MariaDB</span>
-                    </div>
-                    <div class="mission-results">
-                        <span>85 hotes supervises</span>
-                        <span>MTTR : 2h → 25 min</span>
-                        <span>SLA : 99,7 % de disponibilite</span>
+                        <span class="tag">Ivanti</span>
+                        <span class="tag">Télédistribution</span>
+                        <span class="tag">PXE</span>
+                        <span class="tag">Masterisation</span>
                     </div>
                     <div class="competences-list">
-                        <h4>Competences mobilisees :</h4>
+                        <h4>Compétences mobilisées :</h4>
                         <ul>
-                            <li><strong>Concevoir</strong> — architecture supervision, choix templates SNMP</li>
-                            <li><strong>Deployer</strong> — serveur Zabbix, agents, dashboards, alertes</li>
-                            <li><strong>Exploiter</strong> — monitoring quotidien, rapports SLA, depannage</li>
+                            <li>• D1 — Recenser et gérer le patrimoine informatique</li>
+                            <li>• D4 — Planifier les activités</li>
+                            <li>• D5 — Déployer un service</li>
                         </ul>
                     </div>
-                    <a href="Annexe_7-1-A_Mission3_Enes_GUL.pdf" target="_blank" class="btn-pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        Consulter la fiche (PDF)
-                    </a>
+                    <div class="project-links">
+                        <a href="realisations/Mission3_Ivanti.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission3_Productions_Ivanti.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Mission 3 -->
+            <!-- MISSION 4 — Migration Windows 11 -->
             <div class="project-card fade-in">
                 <div class="project-header">
-                    <span class="mission-number">Mission 4</span>
-                    <h3>Migration du parc vers Windows 11 via Ivanti</h3>
-                    <p>Jan. 2025 — Mai 2025</p>
+                    <h3>Mission 4 — Pilotage de la Migration vers Windows 11</h3>
+                    <p>Moderniser le parc informatique et accompagner les utilisateurs au changement</p>
                 </div>
                 <div class="project-body">
-                    <p>Referent technique de la migration de ~800 postes vers Windows 11 23H2 : inventaire automatise (Ivanti + PowerShell), creation d'un master WIM personnalise, deploiement PXE par vagues, migration des profils via USMT et remplacement de 240 postes non compatibles.</p>
+                    <p>Face à la fin du support Windows 10, j'ai piloté la migration du parc vers Windows 11 : inventaire de compatibilité, planification par vagues, déploiement automatisé et accompagnement des utilisateurs au changement.</p>
                     <div class="tags">
                         <span class="tag">Windows 11</span>
                         <span class="tag">Ivanti</span>
-                        <span class="tag">PXE</span>
                         <span class="tag">USMT</span>
-                    </div>
-                    <div class="mission-results">
-                        <span>780 postes migres (98,5 %)</span>
-                        <span>240 postes remplaces</span>
-                        <span>0 perte de donnees</span>
+                        <span class="tag">Conduite du changement</span>
                     </div>
                     <div class="competences-list">
-                        <h4>Competences mobilisees :</h4>
+                        <h4>Compétences mobilisées :</h4>
                         <ul>
-                            <li><strong>Concevoir</strong> — plan de migration, master WIM, strategie par vagues</li>
-                            <li><strong>Deployer</strong> — PXE/Ivanti, USMT, remplacement materiel</li>
-                            <li><strong>Exploiter</strong> — inventaire automatise, suivi migration, support</li>
+                            <li>• D1 — Recenser et gérer le patrimoine informatique</li>
+                            <li>• D4 — Analyser, planifier, évaluer les indicateurs</li>
+                            <li>• D5 — Déployer un service et accompagner les utilisateurs</li>
                         </ul>
                     </div>
-                    <a href="Annexe_7-1-A_Mission4_Enes_GUL.pdf" target="_blank" class="btn-pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        Consulter la fiche (PDF)
-                    </a>
+                    <div class="project-links">
+                        <a href="realisations/Mission4_Migration_W11.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission4_Productions_W11.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Mission 4 -->
+            <!-- MISSION 5 — Watchdoc RSE -->
             <div class="project-card fade-in">
                 <div class="project-header">
-                    <span class="mission-number">Mission 5</span>
-                    <h3>Deploiement GLPI : Helpdesk et gestion ITSM</h3>
-                    <p>Fev. 2025 — Avr. 2025</p>
+                    <h3>Mission 5 — Centralisation des Impressions (Watchdoc)</h3>
+                    <p>Sécuriser les documents confidentiels et réduire l'empreinte carbone (Démarche RSE)</p>
                 </div>
                 <div class="project-body">
-                    <p>Deploiement complet de GLPI 10 sur Debian 12 (LAMP) : integration AD via LDAP, inventaire automatique FusionInventory, workflows d'affectation, 3 niveaux de SLA, portail self-service, 25 articles de base de connaissances et rapports mensuels.</p>
+                    <p>J'ai administré notre solution d'impression centralisée, Watchdoc. J'ai configuré les files d'attente et le système de badgeage, ce qui répond aux exigences de sécurité et soutient la démarche RSE de l'entreprise en limitant le gaspillage papier.</p>
                     <div class="tags">
-                        <span class="tag">GLPI 10</span>
-                        <span class="tag">LDAP</span>
-                        <span class="tag">FusionInventory</span>
-                        <span class="tag">ITIL</span>
-                    </div>
-                    <div class="mission-results">
-                        <span>+350 tickets traites</span>
-                        <span>Resolution N1 : 78 %</span>
-                        <span>Appels support : -40 %</span>
+                        <span class="tag">Watchdoc</span>
+                        <span class="tag">Impression sécurisée</span>
+                        <span class="tag">Badgeage</span>
+                        <span class="tag">RSE</span>
                     </div>
                     <div class="competences-list">
-                        <h4>Competences mobilisees :</h4>
+                        <h4>Compétences mobilisées :</h4>
                         <ul>
-                            <li><strong>Concevoir</strong> — architecture GLPI/LAMP, workflows SLA, portail</li>
-                            <li><strong>Deployer</strong> — GLPI 10, LDAP, FusionInventory, base de connaissances</li>
-                            <li><strong>Exploiter</strong> — traitement tickets N1/N2, rapports, amelioration continue</li>
+                            <li>• D1 — Gérer le patrimoine informatique</li>
+                            <li>• D5 — Déployer un service et accompagner les utilisateurs</li>
                         </ul>
                     </div>
-                    <a href="Annexe_7-1-A_Mission5_Enes_GUL.pdf" target="_blank" class="btn-pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        Consulter la fiche (PDF)
-                    </a>
+                    <div class="project-links">
+                        <a href="realisations/Mission5_Watchdoc.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission5_Productions_Watchdoc.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Mission 5 -->
+            <!-- MISSION 6 — Zabbix -->
             <div class="project-card fade-in">
                 <div class="project-header">
-                    <span class="mission-number">Mission 6</span>
-                    <h3>Politique de sauvegarde et PRA</h3>
-                    <p>Mar. 2025 — Mai 2025</p>
+                    <h3>Mission 6 — Supervision d'Infrastructure avec Zabbix (Projet)</h3>
+                    <p>Anticiper les pannes réseaux pour assurer le Maintien en Condition Opérationnelle</p>
                 </div>
                 <div class="project-body">
-                    <p>Mise en place de Veeam Backup & Replication 12 avec politique 3-2-1 (SAN NetApp + NAS Synology hors site), classification RPO/RTO par criticite metier, tests de restauration mensuels et redaction du PRA (25 pages) valide par la direction.</p>
+                    <p>Les environnements de production d'Eau de Paris étant strictement cloisonnés, j'ai mené ce projet au sein des laboratoires de mon école : déploiement d'un serveur de supervision Zabbix pour monitorer des équipements virtuels et anticiper les pannes.</p>
                     <div class="tags">
-                        <span class="tag">Veeam B&R 12</span>
-                        <span class="tag">VMware vSphere</span>
-                        <span class="tag">NetApp</span>
-                        <span class="tag">PRA</span>
-                    </div>
-                    <div class="mission-results">
-                        <span>100 % des 45 VM sauvegardees</span>
-                        <span>RTO teste < 2h (critiques)</span>
-                        <span>1 restauration d'urgence reussie (1h45)</span>
+                        <span class="tag">Zabbix</span>
+                        <span class="tag">Debian</span>
+                        <span class="tag">SNMP</span>
+                        <span class="tag">Alerting</span>
                     </div>
                     <div class="competences-list">
-                        <h4>Competences mobilisees :</h4>
+                        <h4>Compétences mobilisées :</h4>
                         <ul>
-                            <li><strong>Concevoir</strong> — politique 3-2-1, classification RPO/RTO, PRA</li>
-                            <li><strong>Deployer</strong> — Veeam B&R 12, jobs de sauvegarde, replication</li>
-                            <li><strong>Exploiter</strong> — tests restauration mensuels, restauration d'urgence</li>
+                            <li>• D1 — Assurer la continuité de service</li>
+                            <li>• D4 — Analyser les objectifs et planifier</li>
+                            <li>• D5 — Déployer un service et réaliser les tests</li>
                         </ul>
                     </div>
-                    <a href="Annexe_7-1-A_Mission6_Enes_GUL.pdf" target="_blank" class="btn-pdf">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        Consulter la fiche (PDF)
-                    </a>
+                    <div class="project-links">
+                        <a href="realisations/Mission6_Zabbix.pdf" target="_blank" class="btn-pdf">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                            Fiche technique (PDF)
+                        </a>
+                        <a href="productions/Mission6_Productions_Zabbix.pdf" target="_blank" class="btn-pdf btn-production">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Productions associées
+                        </a>
+                    </div>
                 </div>
             </div>
-
 
         </div>
     </section>
@@ -1396,78 +1470,125 @@
 
     <!-- Veille Technologique -->
     <section id="veille">
-        <h2>Veille technologique</h2>
+        <h2>Veille technologique : de l'IA générative à l'AIOps</h2>
         <div class="veille-container">
             <div class="veille-intro">
-                <h3>Intelligence Artificielle</h3>
-                <p>Dans le cadre de ma veille technologique, je me suis concentré sur l'Intelligence Artificielle, une technologie en pleine expansion qui transforme profondément le secteur informatique et l'administration des systèmes et réseaux.</p>
-                <div class="veille-tool-box">
-                    <h4>Outils de veille passive/active utilisés : Feedly (flux RSS), X, Reddit</h4>
-                    <p>Feedly me permet de centraliser et suivre l'actualité de l'IA provenant de sources fiables (blogs spécialisés, médias tech, publications académiques) via un système de flux RSS.</p>
-                    <p>Des réseaux sociaux tels que X ou bien Reddit me permettent de me tenir informé des actualités concernant l'intelligence artificielle.</p>
+                <h3>Une veille recentrée sur mon métier</h3>
+                <p>Dans le cadre de mon développement professionnel, j'ai mis en place une stratégie de veille automatisée. Mon objectif initial était de comprendre l'impact de l'Intelligence Artificielle sur l'IT. Très vite, j'ai recentré ma veille sur un domaine spécifique à mon métier d'administrateur SISR : l'<strong>AIOps</strong> (Artificial Intelligence for IT Operations), c'est-à-dire l'application du Machine Learning à la supervision, à la gestion d'incidents et à l'automatisation des opérations IT.</p>
+            </div>
+
+            <!-- Bloc 1 — Outils & Sources -->
+            <h3 class="veille-subtitle">1. Mon environnement d'apprentissage</h3>
+            <div class="skills-grid" style="margin-bottom: 3rem;">
+                <div class="skill-card fade-in">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+                        Veille passive (Push)
+                    </h3>
+                    <p style="margin-bottom: 0.8rem;"><strong>Feedly</strong> centralise les flux RSS de mes sources spécialisées dans un dossier « AIOps & Supervision IT ».</p>
+                    <ul style="list-style: none;">
+                        <li style="padding-left: 0;">• LeMagIT</li>
+                        <li style="padding-left: 0;">• ZDNet</li>
+                        <li style="padding-left: 0;">• ITPro</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Veille active (Pull)
+                    </h3>
+                    <p style="margin-bottom: 0.8rem;">Recherche ciblée sur les communautés d'experts pour les retours d'expérience en temps réel.</p>
+                    <ul style="list-style: none;">
+                        <li style="padding-left: 0;">• Reddit — r/sysadmin, r/networking</li>
+                        <li style="padding-left: 0;">• X — comptes spécialisés Zabbix, Datadog</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card fade-in">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Fréquence
+                    </h3>
+                    <p>Synthèse <strong>hebdomadaire le vendredi</strong> pour classer les articles pertinents et alimenter mes réflexions sur l'évolution du métier d'administrateur système et réseaux.</p>
                 </div>
             </div>
 
-            <h3 class="veille-subtitle">Présentation synthétique de l'Intelligence Artificielle</h3>
+            <!-- Bloc 2 — Timeline d'évolution -->
+            <h3 class="veille-subtitle">2. Évolution de ma réflexion</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto; color: var(--text-light); font-style: italic;">Ma veille est quotidienne via Feedly et hebdomadaire en synthèse. Les jalons ci-dessous représentent les moments clés où ma réflexion a évolué au fil de mes deux années de BTS.</p>
+            <div class="veille-timeline">
 
-            <div class="skills-grid" style="margin-bottom: 2rem;">
-                <div class="skill-card fade-in">
-                    <h3>L'importance d'être informé</h3>
-                    <ul style="list-style: none;">
-                        <li style="padding-left: 0;">La veille technologique permet de rester à jour, anticiper les évolutions et stimuler l'innovation.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">On peut s'informer via sites spécialisés, newsletters, réseaux sociaux, conférences et échanges professionnels.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">La curiosité et l'ouverture d'esprit restent essentielles pour explorer les nouvelles technologies.</li>
-                    </ul>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Septembre 2024</span>
+                        <h4>Mise en place de mes outils de veille</h4>
+                        <p>Démarrage du BTS SIO. Configuration de mes premiers outils : création d'un compte Feedly, organisation des flux RSS, ouverture de comptes professionnels (LinkedIn, GitHub) et inscription aux subreddits techniques (r/sysadmin, r/networking).</p>
+                    </div>
                 </div>
-                <div class="skill-card fade-in">
-                    <h3>Deux types d'approches</h3>
-                    <ul style="list-style: none;">
-                        <li style="padding-left: 0;">La veille active (pull) consiste à chercher volontairement l'information via des sources ciblées pour répondre à un besoin précis.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">La veille passive (push) repose sur la réception automatique d'informations via newsletters, flux ou réseaux sociaux.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">Ces deux approches permettent de rester informé selon le contexte et les besoins.</li>
-                    </ul>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mars 2025</span>
+                        <h4>Veille généraliste IT</h4>
+                        <p>Première année : veille large sur les fondamentaux du métier — cybersécurité, cloud, virtualisation, supervision. Cette phase d'exploration m'a permis de cartographier les grands enjeux du secteur informatique avant de me spécialiser.</p>
+                    </div>
                 </div>
-                <div class="skill-card fade-in">
-                    <h3>Fondements principaux de l'IA</h3>
-                    <ul style="list-style: none;">
-                        <li style="padding-left: 0;">Le Machine Learning permet à un algorithme d'apprendre à partir de données, via apprentissage supervisé, non supervisé ou par renforcement.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">Le Deep Learning, sous-catégorie du ML, utilise des réseaux de neurones artificiels pour traiter les données comme un cerveau humain.</li>
-                        <li style="padding-left: 0; margin-top: 0.5rem;">Son fonctionnement repose sur trois couches : entrée (données), cachée (analyse) et sortie (résultats).</li>
-                    </ul>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Septembre 2025</span>
+                        <h4>La découverte de l'IA générative</h4>
+                        <p>Compréhension des enjeux de l'IA générative et de ses limites pour la gestion d'infrastructures critiques. Premiers contacts avec ChatGPT pour assister la rédaction de scripts PowerShell, mais constat rapide : l'IA générative seule n'apporte pas de réponse aux vrais défis de la supervision en production.</p>
+                    </div>
                 </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Janvier 2026</span>
+                        <h4>Le pivot vers l'AIOps</h4>
+                        <p>Découverte de l'AIOps. Étude de cas sur la façon dont le Machine Learning peut analyser les logs en masse pour réduire la « <strong>fatigue des alertes</strong> » — en lien direct avec ma mission de supervision sous Zabbix chez Eau de Paris, où j'ai passé 2 semaines à éliminer manuellement les faux positifs déclenchés par les sauvegardes nocturnes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mai 2026</span>
+                        <h4>Cybersécurité et continuité</h4>
+                        <p>Analyse de l'intégration de l'IA dans les solutions de sauvegarde (ex : <strong>Veeam</strong>) pour détecter les comportements anormaux (ransomwares) avant qu'ils ne compromettent les sauvegardes immuables. Une thématique qui rejoint directement ma mission PRA et la politique 3-2-1 mise en place chez Eau de Paris.</p>
+                    </div>
+                </div>
+
             </div>
 
+            <!-- Bloc 3 — Conclusion -->
+            <div class="veille-conclusion fade-in">
+                <h3 class="veille-subtitle" style="margin-bottom: 1rem;">3. Conclusion et impact professionnel</h3>
+                <p>Cette veille me permet d'<strong>anticiper l'évolution de mon futur métier</strong>. L'administrateur réseau de demain ne se contentera plus de configurer des équipements : il devra paramétrer des algorithmes capables de prédire les pannes et d'automatiser la remédiation de niveau 1. Les fondamentaux SISR que j'ai acquis (AD, réseau, supervision, ITSM) seront le socle sur lequel ces outils viendront s'appuyer — pas les remplacer.</p>
+            </div>
+
+            <!-- Bouton document complet -->
             <div class="veille-download">
-                <a href="https://github.com/Nesgul000/E5/blob/main/Projet%20veille%20technologique.pptx.pdf" download>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Consulter ma présentation complète (PowerPoint)
+                <a href="https://github.com/Nesgul000/E5/blob/main/Projet%20veille%20technologique.pptx.pdf" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Consulter ma présentation complète
                 </a>
-                <p>Présentation détaillée de ma veille sur l'Intelligence Artificielle</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Parcours -->
-    <section id="parcours">
-        <h2>Parcours de formation</h2>
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="timeline-date">2024 - 2026</div>
-                <h3>BTS Services Informatiques aux Organisations</h3>
-                <p><strong>Option SISR</strong> - Aurlom, Paris</p>
-                <p>Formation axée sur l'administration des systèmes et réseaux, la virtualisation, la sécurité informatique et la gestion d'infrastructure.</p>
-            </div>
-            <div class="timeline-item fade-in">
-                <div class="timeline-date">2024 - 2026 (2 années)</div>
-                <h3>Alternance en entreprise</h3>
-                <p><strong>Entreprise Eau de Paris</strong> - Paris</p>
-                <p>Missions : Administration système Windows/Linux, support utilisateurs, maintenance infrastructure réseau, participation à des projets de migration.</p>
-            </div>
-            <div class="timeline-item fade-in">
-                <div class="timeline-date">2021 - 2024</div>
-                <h3>Baccalauréat Général</h3>
-                <p><strong>Mention Assez-Bien</strong> - Lycée Eugène Henaff, Bagnolet</p>
-                <p>Option Sciences Economiques et Sociales / Histoire Géographie Géopolitique et Sciences Politiques</p>
+                <p>Document détaillé sur l'AIOps : définition, acteurs du marché, enjeux et retour d'expérience</p>
             </div>
         </div>
     </section>
